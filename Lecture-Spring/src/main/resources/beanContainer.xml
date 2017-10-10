@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+                        
+   <!-- Hello hello = new Hello(); -->
+   <bean class="basic.Hello" id="hello" scope="singleton" lazy-init="true"/> <!-- scope의 dafault값은 singleton이다.    -->
+   <bean class="basic.Hello" id="hello2" lazy-init="true"/> <!-- 처음 시작할때 xml을 읽지만, 객체를 생성하지 않고, 실행할 때 만든다.  -->
+</beans>

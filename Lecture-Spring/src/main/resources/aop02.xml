@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean class="AOP02.Action" id="action" />
+	<bean class="AOP02.LogAspect" id="LogAspect"/>
+	<bean class="AOP02.Programmer" id="programmer" />
+	<bean class="AOP02.Designer" id="designer" />
+	<bean class="AOP02.Lunch" id="lunch"/>
+
+	<aop:config>
+		<aop:aspect ref="action" order="2">
+			<aop:before method="gotoOffice" pointcut="execution(public void AOP02.*.work())" />
+			<aop:after method="getOffOffice" pointcut="execution(public void AOP02.*.work())" />
+		</aop:aspect>
+		<aop:aspect ref="LogAspect" order="0">
+		<aop:before method="Start" pointcut="execution(public void AOP02.*.work())"/>
+		<aop:after method="End" pointcut="execution(public void AOP02.*.work())"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="lunch"  order="1">
+		<aop:after method="lunch" pointcut="execution(public void AOP02.Designer.work())"/>
+		<aop:after-returning method="dinner" pointcut="execution(public void AOP02.Programmer.work())" returning="lunch"/>
+		
+		</aop:aspect>
+		
+	</aop:config>
+
+</beans>

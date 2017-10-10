@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- <bean id="list" class="DI04.ListAddress">
+		<constructor-arg>
+			<list>
+				<value>서울시 서초구 서초동</value>
+				<value>서울시 성동구 왕십리동</value>
+				<value>서울시 강남구 압구정동</value>
+			</list>
+		</constructor-arg>
+	</bean> -->
+	
+	
+	<bean id="list" class="DI04.ListAddress">
+		<property name="address">
+			<list>
+				<value>서울시 서초구 서초동</value>
+				<value>서울시 성동구 왕십리동</value>
+				<value>서울시 강남구 압구정동</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+</beans>
